@@ -126,6 +126,69 @@ const Home = () => {
           </div>
         </div>
       </div>
+      {/* Featured Reviews Section */}
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-4">Featured Reviews</h2>
+          <p className="text-lg text-base-content/70">
+            Check out the top-rated food experiences from our community
+          </p>
+        </div>
+
+        {loading ? (
+          <div className="flex justify-center">
+            <span className="loading loading-spinner loading-lg"></span>
+          </div>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+              {featuredReviews.map(review => (
+                <div
+                  key={review._id}
+                  className="card bg-base-100 shadow-xl h-full"
+                >
+                  <figure className="h-48">
+                    <img
+                      src={review.foodImage}
+                      alt={review.foodName}
+                      className="w-full h-full object-cover"
+                    />
+                  </figure>
+                  <div className="card-body">
+                    <h2 className="card-title">{review.foodName}</h2>
+                    <div className="flex items-center gap-1 text-yellow-500">
+                      {'★'.repeat(review.rating)}
+                      {'☆'.repeat(5 - review.rating)}
+                      <span className="text-base-content ml-1">
+                        ({review.rating})
+                      </span>
+                    </div>
+                    <p className="font-semibold">{review.restaurantName}</p>
+                    <p className="text-sm text-base-content/70">
+                      📍 {review.location}
+                    </p>
+                    <p className="text-sm">By: {review.reviewerName}</p>
+                    <div className="card-actions justify-end mt-4">
+                      <Link
+                        to={`/review/${review._id}`}
+                        className="btn btn-primary btn-sm"
+                      >
+                        View Details
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="text-center">
+              <Link to="/all-reviews" className="btn btn-primary">
+                Show All Reviews
+              </Link>
+            </div>
+          </>
+        )}
+      </div>
+      ;
     </div>
   );
 };
