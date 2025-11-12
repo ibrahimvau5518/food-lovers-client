@@ -1,4 +1,4 @@
-import { use, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../provider/AuthProvider';
@@ -11,7 +11,7 @@ const Register = () => {
     password: '',
     confirmPassword: '',
   });
-  const { createUser, googleSignIn } = use(AuthContext);
+  const { createUser, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleChange = e => {

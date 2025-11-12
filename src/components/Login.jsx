@@ -1,11 +1,11 @@
-import { use, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../provider/AuthProvider';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
-  const { signIn, googleSignIn } = use(AuthContext);
+  const { signIn, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';

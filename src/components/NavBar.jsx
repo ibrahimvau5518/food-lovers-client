@@ -1,10 +1,10 @@
 import { Link, NavLink } from 'react-router';
 import toast from 'react-hot-toast';
-import { use } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 
 const Navbar = () => {
-  const { user, logOut } = use(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const handleLogout = async () => {
     try {
@@ -37,7 +37,7 @@ const Navbar = () => {
         <>
           <li>
             <NavLink
-              to="/add-review"
+              to="/AddReview"
               className={({ isActive }) => (isActive ? 'active' : '')}
             >
               Add Review
@@ -45,7 +45,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/my-reviews"
+              to="/MyReviews"
               className={({ isActive }) => (isActive ? 'active' : '')}
             >
               My Reviews
