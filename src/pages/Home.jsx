@@ -188,7 +188,47 @@ const Home = () => {
           </>
         )}
       </div>
-      ;
+      {/* Why Choose Us Section */}
+      <div className="bg-base-200 py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-12">
+            Why Join Local Food Lovers?
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="card bg-base-100 shadow-xl">
+              <div className="card-body items-center text-center">
+                <div className="text-5xl mb-4">👥</div>
+                <h3 className="card-title">Community Driven</h3>
+                <p>
+                  Join a passionate community of food lovers who share honest
+                  reviews and recommendations.
+                </p>
+              </div>
+            </div>
+            <div className="card bg-base-100 shadow-xl">
+              <div className="card-body items-center text-center">
+                <div className="text-5xl mb-4">🗺️</div>
+                <h3 className="card-title">Local Focus</h3>
+                <p>
+                  Discover amazing food spots in your neighborhood and nearby
+                  areas.
+                </p>
+              </div>
+            </div>
+            <div className="card bg-base-100 shadow-xl">
+              <div className="card-body items-center text-center">
+                <div className="text-5xl mb-4">⭐</div>
+                <h3 className="card-title">Honest Reviews</h3>
+                <p>
+                  Read genuine reviews from real food enthusiasts, not paid
+                  promotions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
     </div>
   );
 };
