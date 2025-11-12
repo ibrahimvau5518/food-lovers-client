@@ -17,13 +17,13 @@ const Footer = () => {
           <Link to="/" className="link link-hover">
             Home
           </Link>
-          <Link to="/all-reviews" className="link link-hover">
+          <Link to="/AllReviews" className="link link-hover">
             All Reviews
           </Link>
-          <Link to="/add-review" className="link link-hover">
+          <Link to="/AddReview" className="link link-hover">
             Add Review
           </Link>
-          <Link to="/my-reviews" className="link link-hover">
+          <Link to="/MyReviews" className="link link-hover">
             My Reviews
           </Link>
         </nav>

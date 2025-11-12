@@ -9,4 +9,3 @@ const ReviewDetails = () => {
 };
 
 export default ReviewDetails;
-<h3>Review Details</h3>;

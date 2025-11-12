@@ -46,7 +46,7 @@ const Home = () => {
                   Discover and share amazing food experiences from local
                   restaurants, street food, and home-cooked meals.
                 </p>
-                <Link to="/all-reviews" className="btn btn-primary">
+                <Link to="/AllReviews" className="btn btn-primary">
                   Explore Reviews
                 </Link>
               </div>
@@ -79,7 +79,7 @@ const Home = () => {
                   Join our community and share your favorite food experiences
                   with food lovers around you.
                 </p>
-                <Link to="/add-review" className="btn btn-primary">
+                <Link to="/AddReview" className="btn btn-primary">
                   Add Review
                 </Link>
               </div>
@@ -110,7 +110,7 @@ const Home = () => {
                   Discover hidden culinary treasures through honest reviews from
                   fellow food enthusiasts.
                 </p>
-                <Link to="/all-reviews" className="btn btn-primary">
+                <Link to="/AllReviews" className="btn btn-primary">
                   View All Reviews
                 </Link>
               </div>
@@ -181,7 +181,7 @@ const Home = () => {
               ))}
             </div>
             <div className="text-center">
-              <Link to="/all-reviews" className="btn btn-primary">
+              <Link to="/AllReviews" className="btn btn-primary">
                 Show All Reviews
               </Link>
             </div>
