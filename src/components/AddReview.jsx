@@ -23,7 +23,7 @@ const AddReview = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
     const reviewData = {
       ...formData,
       rating: parseInt(formData.rating),

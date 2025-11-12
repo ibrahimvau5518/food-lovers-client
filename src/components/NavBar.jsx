@@ -101,7 +101,9 @@ const Navbar = () => {
               <div className="w-10 rounded-full">
                 <img
                   alt={user.displayName || 'User'}
-                  src={user.photoURL || 'https://via.placeholder.com/150'}
+                  src={
+                    user.photoURL || 'https://placehold.co/150x150?text=User'
+                  }
                 />
               </div>
             </div>
@@ -113,13 +115,13 @@ const Navbar = () => {
                 <span>{user.displayName || user.email}</span>
               </li>
               <li>
-                <Link to="/add-review">Add Review</Link>
+                <Link to="/AddReview">Add Review</Link>
               </li>
               <li>
-                <Link to="/my-reviews">My Reviews</Link>
+                <Link to="/MyReviews">My Reviews</Link>
               </li>
               <li>
-                <Link to="/my-favorites">My Favorites</Link>
+                <Link to="/MyFavorites">My Favorites</Link>
               </li>
               <li>
                 <button onClick={handleLogout}>Logout</button>

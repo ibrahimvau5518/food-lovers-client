@@ -19,8 +19,7 @@ const MyReviews = () => {
 
   const fetchMyReviews = async () => {
     try {
-      const apiUrl =
-        import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
       const response = await axios.get(`${apiUrl}/reviews/user/${user.email}`);
       setReviews(response.data);
     } catch (error) {
@@ -43,8 +42,7 @@ const MyReviews = () => {
 
   const handleDelete = async () => {
     try {
-      const apiUrl =
-        import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
       await axios.delete(`${apiUrl}/reviews/${selectedReview._id}`);
       toast.success('Review deleted successfully!');
       setReviews(reviews.filter(r => r._id !== selectedReview._id));
@@ -71,7 +69,7 @@ const MyReviews = () => {
         {reviews.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-xl mb-4">You haven't added any reviews yet</p>
-            <Link to="/add-review" className="btn btn-primary">
+            <Link to="/AddReview" className="btn btn-primary">
               Add Your First Review
             </Link>
           </div>

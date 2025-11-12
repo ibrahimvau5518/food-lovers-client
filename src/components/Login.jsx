@@ -5,7 +5,7 @@ import { AuthContext } from '../provider/AuthProvider';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
-  const { signIn, googleSignIn } = useContext(AuthContext);
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
@@ -35,7 +35,7 @@ const Login = () => {
 
   const handleGoogleSignIn = async () => {
     try {
-      await googleSignIn();
+      await signInWithGoogle();
       toast.success('Login successful!');
       navigate(from, { replace: true });
     } catch (error) {

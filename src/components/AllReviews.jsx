@@ -10,17 +10,15 @@ const AllReviews = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const { user } = useContext(AuthContext);
 
-  useEffect(() => {
-    fetchReviews();
-  }, []);
+  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
+  // ✅ Fetch all or filtered reviews
   const fetchReviews = async (search = '') => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-
-      const url = search
-        ? `${apiUrl}/reviews/search?foodName=${encodeURIComponent(search)}`
-        : `${apiUrl}/reviews`;
+      const url =
+        search.trim() === ''
+          ? `${apiUrl}/reviews`
+          : `${apiUrl}/reviews/search?foodName=${encodeURIComponent(search)}`;
 
       const response = await axios.get(url);
       setReviews(response.data);
@@ -32,10 +30,20 @@ const AllReviews = () => {
     }
   };
 
+  useEffect(() => {
+    fetchReviews();
+  }, []);
+
   const handleSearch = e => {
     e.preventDefault();
     setLoading(true);
     fetchReviews(searchTerm);
+  };
+
+  const handleClearSearch = () => {
+    setSearchTerm('');
+    setLoading(true);
+    fetchReviews('');
   };
 
   const handleAddToFavorites = async reviewId => {
@@ -45,7 +53,6 @@ const AllReviews = () => {
     }
 
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
       await axios.post(`${apiUrl}/favorites`, {
         userEmail: user.email,
         reviewId: reviewId,
@@ -74,7 +81,7 @@ const AllReviews = () => {
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-bold text-center mb-8">All Reviews</h1>
 
-        {/* Search Bar */}
+        {/* 🔍 Search Bar */}
         <div className="max-w-md mx-auto mb-8">
           <form onSubmit={handleSearch} className="flex gap-2">
             <input
@@ -90,11 +97,7 @@ const AllReviews = () => {
             {searchTerm && (
               <button
                 type="button"
-                onClick={() => {
-                  setSearchTerm('');
-                  setLoading(true);
-                  fetchReviews('');
-                }}
+                onClick={handleClearSearch}
                 className="btn btn-ghost"
               >
                 Clear
@@ -103,6 +106,7 @@ const AllReviews = () => {
           </form>
         </div>
 
+        {/* 💬 Reviews Grid */}
         {reviews.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-xl">No reviews found</p>
@@ -116,7 +120,7 @@ const AllReviews = () => {
               >
                 <figure className="h-48 relative">
                   <img
-                    src={review.foodImage}
+                    src={review.foodImage || 'https://via.placeholder.com/300'}
                     alt={review.foodName}
                     className="w-full h-full object-cover"
                   />
@@ -144,7 +148,9 @@ const AllReviews = () => {
                   </p>
                   <p className="text-sm">By: {review.reviewerName}</p>
                   <p className="text-sm text-base-content/70">
-                    {new Date(review.createdAt).toLocaleDateString()}
+                    {review.createdAt
+                      ? new Date(review.createdAt).toLocaleDateString()
+                      : ''}
                   </p>
                   <div className="card-actions justify-end mt-4">
                     <Link

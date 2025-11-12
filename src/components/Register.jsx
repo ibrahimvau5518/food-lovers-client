@@ -11,7 +11,7 @@ const Register = () => {
     password: '',
     confirmPassword: '',
   });
-  const { createUser, googleSignIn } = useContext(AuthContext);
+  const { createUser, updateUser, signInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleChange = e => {
@@ -23,43 +23,42 @@ const Register = () => {
     const hasLowerCase = /[a-z]/.test(password);
     const isLongEnough = password.length >= 6;
 
-    if (!hasUpperCase) {
+    if (!hasUpperCase)
       return 'Password must contain at least one uppercase letter';
-    }
-    if (!hasLowerCase) {
+    if (!hasLowerCase)
       return 'Password must contain at least one lowercase letter';
-    }
-    if (!isLongEnough) {
-      return 'Password must be at least 6 characters long';
-    }
+    if (!isLongEnough) return 'Password must be at least 6 characters long';
     return null;
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
 
-    // Validate password
     const passwordError = validatePassword(formData.password);
     if (passwordError) {
       toast.error(passwordError);
       return;
     }
 
-    // Check if passwords match
     if (formData.password !== formData.confirmPassword) {
       toast.error('Passwords do not match');
       return;
     }
 
     try {
-      await createUser(
-        formData.email,
-        formData.password,
-        formData.name,
-        formData.photoURL
-      );
+      // Create user
+      const result = await createUser(formData.email, formData.password);
+
+      // Update display name and photo
+      await updateUser({
+        displayName: formData.name,
+        photoURL: formData.photoURL,
+      });
+
+      toast.success('Account created successfully!');
       navigate('/');
     } catch (error) {
+      console.error(error);
       if (error.code === 'auth/email-already-in-use') {
         toast.error('Email already in use');
       } else if (error.code === 'auth/invalid-email') {
@@ -74,10 +73,11 @@ const Register = () => {
 
   const handleGoogleSignIn = async () => {
     try {
-      await googleSignIn();
+      await signInWithGoogle();
+      toast.success('Logged in with Google!');
       navigate('/');
     } catch (error) {
-      toast.error('Google sign in failed');
+      toast.error('Google sign-in failed');
     }
   };
 
@@ -101,6 +101,7 @@ const Register = () => {
                 required
               />
             </div>
+
             <div className="form-control mt-4">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -115,6 +116,7 @@ const Register = () => {
                 required
               />
             </div>
+
             <div className="form-control mt-4">
               <label className="label">
                 <span className="label-text">Photo URL</span>
@@ -129,6 +131,7 @@ const Register = () => {
                 required
               />
             </div>
+
             <div className="form-control mt-4">
               <label className="label">
                 <span className="label-text">Password</span>
@@ -148,6 +151,7 @@ const Register = () => {
                 </span>
               </label>
             </div>
+
             <div className="form-control mt-4">
               <label className="label">
                 <span className="label-text">Confirm Password</span>
@@ -162,6 +166,7 @@ const Register = () => {
                 required
               />
             </div>
+
             <div className="form-control mt-6">
               <button type="submit" className="btn btn-primary">
                 Register

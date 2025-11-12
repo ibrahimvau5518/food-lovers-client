@@ -14,8 +14,7 @@ const ReviewDetails = () => {
 
   const fetchReview = async () => {
     try {
-      const apiUrl =
-        import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
       const response = await axios.get(`${apiUrl}/reviews/${id}`);
       setReview(response.data);
     } catch (error) {
@@ -102,7 +101,7 @@ const ReviewDetails = () => {
             </div>
 
             <div className="card-actions justify-end mt-6">
-              <Link to="/all-reviews" className="btn btn-primary">
+              <Link to="/AllReviews" className="btn btn-primary">
                 Back to All Reviews
               </Link>
             </div>
