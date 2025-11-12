@@ -9,6 +9,7 @@ import EditReview from '../components/EditReview';
 import MyFavorites from '../components/MyFavorites';
 import ReviewDetails from '../components/ReviewDetails';
 import AddReview from '../components/AddReview';
+import PrivateRoute from '../provider/PrivateRoute';
 
 const Router = createBrowserRouter([
   {
@@ -38,19 +39,39 @@ const Router = createBrowserRouter([
       },
       {
         path: '/addReview',
-        element: <AddReview></AddReview>, 
+        element: (
+          <PrivateRoute>
+            <AddReview></AddReview>,
+          </PrivateRoute>
+        ),
       },
       {
         path: '/myReviews',
-        element: <MyReviews></MyReviews>,
+        element: (
+          <PrivateRoute>
+            <MyReviews></MyReviews>,
+          </PrivateRoute>
+        ),
       },
       {
         path: '/editReview/:id',
-        element: <EditReview></EditReview>,
+        element: (
+          <PrivateRoute>
+            <EditReview></EditReview>,
+          </PrivateRoute>
+        ),
       },
       {
         path: '/myFavorites',
-        element: <MyFavorites></MyFavorites>,
+        element: (
+          <PrivateRoute>
+            <MyFavorites></MyFavorites>,
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: '*',
+        element: <div>404 Not Found</div>,
       },
     ],
   },
