@@ -1,16 +1,35 @@
-# React + Vite
+# Food Lovers Network
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Site URL:** [https://food-lovers-network.vercel.app](https://food-lovers-network.vercel.app)  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## About This Project
+**Food Lovers Network** is a community-based web platform where users can explore, share, and review local food experiences.  
+Built with **React (client)** and **Express + MongoDB (server)**, it provides a simple yet interactive experience for food enthusiasts.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Key Features
 
-## Expanding the ESLint configuration
+- **Add & Manage Reviews:** Users can post, edit, and delete their own food reviews.
+- **Browse Food Reviews:** Explore food experiences shared by others in an organized list.
+- **Favorite System:** Mark and save your favorite food reviews for quick access.
+- **User Authentication:** Secure login system (Firebase/Custom) to manage user-based actions.
+- **Responsive Design:** Fully optimized for mobile, tablet, and desktop devices.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Tech Stack
+
+**Client:** React, React Router, Tailwind CSS  
+**Server:** Node.js, Express.js, MongoDB  
+**Deployment:** Vercel  
+
+---
+
+## Setup Instructions
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/food-lovers-network.git

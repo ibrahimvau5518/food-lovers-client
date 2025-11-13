@@ -46,10 +46,8 @@ const Register = () => {
     }
 
     try {
-      // Create user
       const result = await createUser(formData.email, formData.password);
 
-      // Update display name and photo
       await updateUser({
         displayName: formData.name,
         photoURL: formData.photoURL,

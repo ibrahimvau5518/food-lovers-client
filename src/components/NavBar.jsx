@@ -27,7 +27,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/allReviews"
+          to="/AllReviews"
           className={({ isActive }) => (isActive ? 'active' : '')}
         >
           All Reviews

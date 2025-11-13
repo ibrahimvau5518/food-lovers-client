@@ -14,7 +14,7 @@ const AllReviews = () => {
     import.meta.env.VITE_API_URL ||
     'https://local-food-lovers-api-server.vercel.app';
 
-  // ✅ Fetch all or filtered reviews
+  // Fetch all or filtered reviews
   const fetchReviews = async (search = '') => {
     try {
       const url =
@@ -83,7 +83,6 @@ const AllReviews = () => {
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-bold text-center mb-8">All Reviews</h1>
 
-        {/* 🔍 Search Bar */}
         <div className="max-w-md mx-auto mb-8">
           <form onSubmit={handleSearch} className="flex gap-2">
             <input
@@ -108,7 +107,6 @@ const AllReviews = () => {
           </form>
         </div>
 
-        {/* 💬 Reviews Grid */}
         {reviews.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-xl">No reviews found</p>

@@ -19,14 +19,13 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // ✅ Create new user
+  // Create new user
   const createUser = async (email, password) => {
     setLoading(true);
     const result = await createUserWithEmailAndPassword(auth, email, password);
     return result;
   };
 
-  // ✅ Update user profile (name/photo)
   const updateUser = async updatedData => {
     if (auth.currentUser) {
       await updateProfile(auth.currentUser, updatedData);
@@ -35,7 +34,6 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  // ✅ Logout (handles Google too)
   const logOut = async () => {
     try {
       setLoading(true);
@@ -49,19 +47,16 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  // ✅ Login with email/password
   const signIn = async (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  // ✅ Login with Google
   const signInWithGoogle = async () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
-  // ✅ Track auth state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser);

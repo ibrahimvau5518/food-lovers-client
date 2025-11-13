@@ -125,7 +125,6 @@ const MyReviews = () => {
           </div>
         )}
 
-        {/* Delete Confirmation Modal */}
         {deleteModalOpen && (
           <dialog open className="modal">
             <div className="modal-box">

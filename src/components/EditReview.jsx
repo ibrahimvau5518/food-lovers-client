@@ -30,7 +30,6 @@ const EditReview = () => {
       const response = await axios.get(`${apiUrl}/reviews/${id}`);
       const review = response.data;
 
-      // Check if user owns this review
       if (review.userEmail !== user.email) {
         toast.error('You can only edit your own reviews');
         navigate('/my-reviews');
