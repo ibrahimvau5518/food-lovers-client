@@ -10,7 +10,9 @@ const AllReviews = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const { user } = useContext(AuthContext);
 
-  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+  const apiUrl =
+    import.meta.env.VITE_API_URL ||
+    'https://local-food-lovers-api-server.vercel.app';
 
   // ✅ Fetch all or filtered reviews
   const fetchReviews = async (search = '') => {

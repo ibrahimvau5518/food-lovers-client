@@ -17,7 +17,9 @@ const MyFavorites = () => {
 
   const fetchFavorites = async () => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+      const apiUrl =
+        import.meta.env.VITE_API_URL ||
+        'https://local-food-lovers-api-server.vercel.app';
       const response = await axios.get(`${apiUrl}/favorites/${user.email}`);
       setFavorites(response.data);
     } catch (error) {
@@ -30,7 +32,9 @@ const MyFavorites = () => {
 
   const handleRemoveFavorite = async favoriteId => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+      const apiUrl =
+        import.meta.env.VITE_API_URL ||
+        'https://local-food-lovers-api-server.vercel.app';
       await axios.delete(`${apiUrl}/favorites/${favoriteId}`);
       setFavorites(favorites.filter(f => f._id !== favoriteId));
       toast.success('Removed from favorites');

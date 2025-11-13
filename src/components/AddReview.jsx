@@ -23,7 +23,9 @@ const AddReview = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+    const apiUrl =
+      import.meta.env.VITE_API_URL ||
+      'https://local-food-lovers-api-server.vercel.app';
     const reviewData = {
       ...formData,
       rating: parseInt(formData.rating),
@@ -35,7 +37,7 @@ const AddReview = () => {
     try {
       await axios.post(`${apiUrl}/reviews`, reviewData);
       toast.success('Review added successfully!');
-      navigate('/my-reviews');
+      navigate('/MyReviews');
     } catch (error) {
       toast.error('Failed to add review');
       console.error('Error adding review:', error);

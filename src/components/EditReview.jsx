@@ -24,7 +24,9 @@ const EditReview = () => {
 
   const fetchReview = async () => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+      const apiUrl =
+        import.meta.env.VITE_API_URL ||
+        'https://local-food-lovers-api-server.vercel.app';
       const response = await axios.get(`${apiUrl}/reviews/${id}`);
       const review = response.data;
 
@@ -58,7 +60,9 @@ const EditReview = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+    const apiUrl =
+      import.meta.env.VITE_API_URL ||
+      'https://local-food-lovers-api-server.vercel.app';
     const reviewData = {
       ...formData,
       rating: parseInt(formData.rating),

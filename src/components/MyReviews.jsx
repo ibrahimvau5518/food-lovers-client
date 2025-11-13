@@ -19,7 +19,9 @@ const MyReviews = () => {
 
   const fetchMyReviews = async () => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+      const apiUrl =
+        import.meta.env.VITE_API_URL ||
+        'https://local-food-lovers-api-server.vercel.app';
       const response = await axios.get(`${apiUrl}/reviews/user/${user.email}`);
       setReviews(response.data);
     } catch (error) {
@@ -42,7 +44,9 @@ const MyReviews = () => {
 
   const handleDelete = async () => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+      const apiUrl =
+        import.meta.env.VITE_API_URL ||
+        'https://local-food-lovers-api-server.vercel.app';
       await axios.delete(`${apiUrl}/reviews/${selectedReview._id}`);
       toast.success('Review deleted successfully!');
       setReviews(reviews.filter(r => r._id !== selectedReview._id));
